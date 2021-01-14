@@ -36,9 +36,9 @@ export default class Canvas extends Component {
   }
 
   static propTypes = {
-    style: ViewPropTypes.style,
-    baseUrl: PropTypes.string,
-    originWhitelist: PropTypes.arrayOf(PropTypes.string),
+    style: (ViewPropTypes || View.propTypes) ? (ViewPropTypes || View.propTypes).style : PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    baseUrl: (ViewPropTypes || View.propTypes || PropTypes).string,
+    originWhitelist: (ViewPropTypes || View.propTypes || PropTypes).arrayOf((ViewPropTypes || View.propTypes || PropTypes).string),
   };
 
   addMessageListener = listener => {
